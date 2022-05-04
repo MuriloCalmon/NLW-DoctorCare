@@ -1,3 +1,5 @@
+/*================GERAL============================*/
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -7,6 +9,9 @@
   --primary-color: hsl(170, 100%, 26%);
   --secondary-color-headline: hsl(210, 11%, 15%);
   --secondary-color-paragraph: hsla(210, 11%, 15%, 1);
+  --brand-beige: hsla(39, 100%, 97%, 1);
+  --brand-green: hsla(148, 23%, 89%, 1);
+  --nav-height: 7.2rem;
 
   font-size: 62.5%;
 }
@@ -17,33 +22,52 @@ body {
   text-align: center;
 }
 
-header {
+.wrapper {
   width: 37.5rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
+  padding-inline: 2.4rem;
 }
 
-h4 {
+header {
+  margin-top: calc(4.1rem + var(--nav-height));
+}
+
+/*================HEADER============================*/
+
+header::before {
+  content: ' ';
+  width: 100vw;
+  height: calc(108rem + var(--nav-height));
+  background-color: var(--brand-green);
+  display: block;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+header h4 {
   font-size: 1.4rem;
   color: var(--primary-color);
-  margin: 4.1rem 6.1rem 1.6rem 6rem;
+  margin-bottom: 1.6rem;
 }
 
-h1 {
+header h1 {
   line-height: 130%;
   font-size: 3.4rem;
   color: var(--secondary-color-headline);
-  margin: 0rem 2.4rem 2.4rem 2.4rem;
+  margin-bottom: 2.4rem;
 }
 
-p {
+header p {
   font-size: 1.8rem;
   color: var(--secondary-color-paragraph);
   line-height: 150%;
-  margin: 0rem 2.4rem 2.4rem 3.2rem;
+  margin-bottom: 3.2rem;
 }
 
-button {
+header button {
   background-color: var(--primary-color);
 
   margin-bottom: 6rem;
@@ -63,4 +87,83 @@ button {
   justify-content: center;
   align-items: center;
   gap: 1.6rem;
+}
+
+header img {
+  width: 32.7rem;
+}
+
+.stats {
+  background: var(--brand-beige);
+
+  border: solid 1px var(--brand-green);
+
+  width: 32.7rem;
+  height: 47rem;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border-radius: 0.6rem;
+
+  position: relative;
+  bottom: 2.4rem;
+}
+
+.stats p {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  line-height: 150%;
+}
+
+.stats h3 {
+  font-weight: 700;
+  font-size: 4.8rem;
+  line-height: 130%;
+  margin-bottom: 0.4rem;
+}
+
+.s1 {
+  padding-top: 4rem;
+}
+
+.s2 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.s3 {
+  padding-bottom: 4rem;
+}
+
+/*================NAVIGATION============================*/
+
+nav {
+  display: flex;
+
+  height: var(--nav-height);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+nav .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav.scroll {
+  background-color: var(--primary-color);
+  width: 100vw;
+}
+
+
+nav.scroll svg:nth-child(1) path {
+  fill: white;
+}
+
+nav.scroll svg:nth-child(2) path {
+  stroke: white;
 }
