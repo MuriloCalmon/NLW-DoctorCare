@@ -1,5 +1,13 @@
+window.addEventListener('scroll', onScroll)
+onScroll()
+
 function onScroll() {
-  if (scrollY > 34) {
+  showNavOnScroll()
+  addButtonBackToTopOnScroll()
+}
+
+function showNavOnScroll() {
+  if (scrollY > 0) {
     navigation.classList.add('scroll')
   } else {
     navigation.classList.remove('scroll')
@@ -12,6 +20,14 @@ function openMenu() {
 
 function closeMenu() {
   document.body.classList.remove('menu-expanded')
+}
+
+function addButtonBackToTopOnScroll() {
+  if (scrollY > 1500) {
+    buttonBackToTop.classList.add('show')
+  } else {
+    buttonBackToTop.classList.remove('show')
+  }
 }
 
 ScrollReveal({
@@ -27,4 +43,9 @@ ScrollReveal({
   #abour,
   #about header,
   #about content,
-  #about img`)
+  #about img,
+  #contact header,
+  #contact img,
+  #contact .content ul,
+  #contact .content .button,
+  #fotter`)
