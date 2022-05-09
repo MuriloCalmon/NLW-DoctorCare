@@ -4,6 +4,43 @@ onScroll()
 function onScroll() {
   showNavOnScroll()
   addButtonBackToTopOnScroll()
+  activeMenuAtCurrentSection(home)
+  activeMenuAtCurrentSection(services)
+  activeMenuAtCurrentSection(about)
+  activeMenuAtCurrentSection(contact)
+}
+
+//verifica se a seção passou da linha
+function activeMenuAtCurrentSection(section) {
+  //Linha alvo
+  const tagetLine = scrollY + innerHeight / 2
+
+  //Topo da seção
+  const sectionTop = section.offsetTop
+
+  //ALtura da seção
+  const sectionHeight = section.offsetHeight
+
+  //O topo da seção chegou ou passou da linha alvo
+  const sectionTopReachOrPassedTargetLine = tagetLine >= sectionTop
+
+  //A seção termina onde
+  const sectionEndAt = sectionHeight + sectionTop
+
+  //O final da seção passou da linha alvo
+  const sectionEndPasserTargerLine = sectionEndAt <= tagetLine
+
+  //limites da seção
+  const sectionBoundaries =
+    sectionTopReachOrPassedTargetLine && !sectionEndPasserTargerLine
+
+  const selectId = section.getAttribute('id')
+  const menuElement = document.querySelector(`.menu a[href*=${selectId}]`)
+
+  menuElement.classList.remove('active')
+  if (sectionBoundaries) {
+    menuElement.classList.add('active')
+  }
 }
 
 function showNavOnScroll() {
@@ -23,7 +60,7 @@ function closeMenu() {
 }
 
 function addButtonBackToTopOnScroll() {
-  if (scrollY > 1500) {
+  if (scrollY > 400) {
     buttonBackToTop.classList.add('show')
   } else {
     buttonBackToTop.classList.remove('show')
