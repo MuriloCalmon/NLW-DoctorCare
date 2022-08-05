@@ -1,3 +1,6 @@
+const nav = document.querySelector('#navigation')
+const buttonBackToTop = document.querySelector('#buttonBackToTop')
+
 window.addEventListener('scroll', onScroll)
 onScroll()
 
@@ -45,9 +48,9 @@ function activeMenuAtCurrentSection(section) {
 
 function showNavOnScroll() {
   if (scrollY > 0) {
-    navigation.classList.add('scroll')
+    nav.classList.add('scroll')
   } else {
-    navigation.classList.remove('scroll')
+    nav.classList.remove('scroll')
   }
 }
 
